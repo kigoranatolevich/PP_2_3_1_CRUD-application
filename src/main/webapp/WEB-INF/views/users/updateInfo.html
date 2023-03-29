@@ -8,7 +8,9 @@
 <h2>User Info</h2>
 <br>
 
-<form th:action="@{/users/saveUser}" th:method="POST" th:object="${user}">
+<form th:action="@{/users/updateUser}" th:method="PATCH" th:object="${existingUser}">
+    <label for="id"></label>
+    <input th:hidden="id" type="text" th:field="*{id}" id="id">
     <label for="name">Name:</label>
     <input type="text" th:field="*{name}" id="name"><br><br>
     <label for="surname">Surname:</label>

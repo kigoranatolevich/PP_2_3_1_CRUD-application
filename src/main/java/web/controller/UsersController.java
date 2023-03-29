@@ -11,7 +11,7 @@ import web.service.UserService;
 @RequestMapping("/users")
 public class UsersController {
 
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
     public UsersController(UserService userService) {
@@ -37,11 +37,17 @@ public class UsersController {
         return "redirect:/users";
     }
 
-    @GetMapping("/updateInfo")
-    public String updateUser(@RequestParam("userId") int id, Model model) {
-        User user = userService.getUser(id);
-        model.addAttribute("user", user);
-        return "users/userInfo";
+    @GetMapping("/addExistingUser")
+    public String addExistingUser(@RequestParam("userId") int id, Model model) {
+        User existingUser = userService.getUser(id);
+        model.addAttribute("existingUser", existingUser);
+        return "users/updateInfo";
+    }
+
+    @PatchMapping ("/updateUser")
+    public String updateUser(@ModelAttribute("existingUser") User existingUser) {
+        userService.updateUser(existingUser);
+        return "redirect:/users";
     }
 
     @GetMapping("/deleteUser")

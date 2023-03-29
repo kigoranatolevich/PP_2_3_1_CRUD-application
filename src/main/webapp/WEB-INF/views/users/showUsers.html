@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en, ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>User Table</title>
@@ -27,7 +27,7 @@
         <td th:text="${user.getSurname()}"></td>
         <td th:text="${user.getEmail()}"></td>
         <td>
-            <a th:href="@{users/updateInfo/(userId=${user.getId()})}">
+            <a th:href="@{users/addExistingUser/(userId=${user.getId()})}">
                 <input type="button" value="Update"/>
             </a>
         </td>
