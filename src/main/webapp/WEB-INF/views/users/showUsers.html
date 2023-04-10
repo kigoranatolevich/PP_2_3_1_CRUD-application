@@ -27,14 +27,17 @@
         <td th:text="${user.getSurname()}"></td>
         <td th:text="${user.getEmail()}"></td>
         <td>
-            <a th:href="@{users/addExistingUser/(userId=${user.getId()})}">
+            <a th:href="@{users/getExistingUser/(userId=${user.getId()})}">
                 <input type="button" value="Update"/>
             </a>
         </td>
         <td>
-            <a th:href="@{users/deleteUser/(userId=${user.getId()})}">
-                <input type="button" value="Delete"/>
-            </a>
+            <form th:action="@{users/deleteUser/(userId=${user.getId()})}" th:method="DELETE">
+                <input type="submit" value="Delete"/>
+            </form>
+<!--            <a th:href="@{users/deleteUser/(userId=${user.getId()})}">-->
+<!--                <input type="button" value="Delete"/>-->
+<!--            </a>-->
         </td>
 
     </tr>

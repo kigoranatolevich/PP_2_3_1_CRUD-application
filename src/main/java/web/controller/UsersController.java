@@ -37,8 +37,8 @@ public class UsersController {
         return "redirect:/users";
     }
 
-    @GetMapping("/addExistingUser")
-    public String addExistingUser(@RequestParam("userId") int id, Model model) {
+    @GetMapping("/getExistingUser")
+    public String getExistingUser(@RequestParam("userId") int id, Model model) {
         User existingUser = userService.getUser(id);
         model.addAttribute("existingUser", existingUser);
         return "users/updateInfo";
@@ -50,7 +50,7 @@ public class UsersController {
         return "redirect:/users";
     }
 
-    @GetMapping("/deleteUser")
+    @DeleteMapping("/deleteUser")
     public String deleteUser(@RequestParam("userId") int id) {
         userService.deleteUser(id);
         return "redirect:/users";
